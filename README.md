@@ -25,7 +25,7 @@ This is a implementation for sentential argument generation.
 
 ### commands
 
-```python
+```
 # Preprocessing
 python preprocessing.py
 # (Optional) Pretrain the weights of encoder and decoder
