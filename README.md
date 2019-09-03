@@ -72,15 +72,6 @@ python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 │                      └──── split/
 ```
 
-
-
-
-
-
-
-```
-
-```
 ## References
 
 * The implementation of attention mechanism and neural network is based on [this](<https://github.com/XinyuHua/neural-argument-generation>) and [this](<https://github.com/abisee/pointer-generator>) repositories.
@@ -89,11 +80,3 @@ python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 ## Contributor
 
 [ChaeHun](http://nlp.kaist.ac.kr/~ddehun)
-
-```
-
-
-
-
-```
-
