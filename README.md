@@ -25,7 +25,7 @@ This is a implementation for sentential argument generation.
 
 
 
-#### commands
+#### Commands
 
 
 Preprocessing
