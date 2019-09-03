@@ -16,12 +16,12 @@ This is a implementation for sentential argument generation.
 
 #### Prerequistes
 
-1. Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper.
+- Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper.
 
-2. (Optional) Download the Wikitext-103 from [here](<https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/>), proposed in [this]() paper.
+- (Optional) Download the Wikitext-103 from [here](<https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/>), proposed in [this]() paper.
    - If you don't pre-train a model, just skip this part and use `--use_pretrain=False` flag when train a model.
    
-3. Download the Glove word embedding from [here.](<https://nlp.stanford.edu/projects/glove/>)
+- Download the Glove word embedding from [here.](<https://nlp.stanford.edu/projects/glove/>)
 
 
 
