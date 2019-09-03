@@ -5,22 +5,17 @@ import os
 import json
 import numpy as np
 import tensorflow as tf
-from models.basemodel import BaseModel
-from models.lm_model import LMModel
-from models.Posterior import PosteriorModel
-from models.MHAM import MHAModel
-from models.MultiMech import MultiMech
-from models.mmpms import MMPMS
-from models.emb_min import DiverEmbMin
-from models.emb_avg import DiverEmbAvg
 from data_loader import Batcher
 import utils
+from models.basemodel import BaseModel
+from models.lm import LMModel
+from models.emb_min import DiverEmbMin
 from beamsearch import BeamsearchDecoder
 
 
 parser = argparse.ArgumentParser()
 
-# path for data and model storage
+# path for data and models storage
 parser.add_argument("--parsed_data_path", type=str, default="data/trainable/split/parsed_perspectrum_data.json")
 parser.add_argument("--processed_data_path", type=str, default="data/trainable/split/processed_perspectrum_data.json")
 parser.add_argument("--split_data_path", type=str, default="data/trainable/split/{}_processed.json")
@@ -29,14 +24,14 @@ parser.add_argument("--data_path", type=str, default="data/trainable/split/train
 parser.add_argument("--vocab_path", type=str, default="data/vocab.txt", help="Path to vocabulary.")
 parser.add_argument("--embed_path", type=str, default="data/embed/glove.6B.300d.txt", help="Path to word embedding.")
 parser.add_argument("--custom_embed_path", type=str, default="data/embed/my_words.txt")
-parser.add_argument("--model_path", type=str, default="data/log/{}", help="Path to store the model checkpoints.")
+parser.add_argument("--model_path", type=str, default="data/log/{}", help="Path to store the models checkpoints.")
 parser.add_argument("--exp_name", type=str, default="scratch", help="Experiment name under model_path.")
 parser.add_argument("--parser_path", type=str, default="./../stanford-corenlp-full-2018-10-05")
 parser.add_argument("--pretrain_ckpt_path", type=str, default='./data/log/lm/scratch/train/')
 parser.add_argument('--gpu_nums', type=str, default='1', help='gpu id to use')
 
-# model setups
-parser.add_argument("--model", type=str, choices=["vanilla", "mmi_bidi", 'lm', 'posterior','multi_head','multiMech', 'mmpms', 'embmin', 'embavg'], default="vanilla", help="Different types of models, choose from vanilla, sep_dec, and shd_dec.")
+# models setups
+parser.add_argument("--models", type=str, choices=["vanilla", 'lm', 'embmin'], default="vanilla", help="Different types of models, choose from vanilla, sep_dec, and shd_dec.")
 parser.add_argument("--mode", type=str, choices=["train", "lm_train", "decode", 'eval'], help="Whether to run train, eval, or decode", default="train")
 parser.add_argument("--min_cnt", type=int, help="word minimum count", default=1)
 parser.add_argument("--use_pretrain", type=str, choices=['True', 'False'], default='True')
@@ -71,10 +66,6 @@ parser.add_argument('--mmi_bsize', type=int, default=100)
 parser.add_argument('--mmi_lambda', type=float, default=0.5)
 parser.add_argument('--mmi_gamma', type=float, default=1.0)
 
-parser.add_argument('--mechanism_num', type=int, default=5)
-parser.add_argument('--mechanism_dim', type=int, default=128)
-
-parser.add_argument('--mmpms_num', type=int, default=12)
 parser.add_argument('--emb_min_coeff', type=float, default=0.5)
 
 args = parser.parse_args()
@@ -180,9 +171,9 @@ def main():
     with open(os.path.join(args.model_path, 'config.json'), 'w', encoding='utf8') as f:
         json.dump(vars(args), f)
 
-    print("Default model path: {}".format(args.model_path))
+    print("Default models path: {}".format(args.model_path))
 
-    print('code start/ {} mode / {} model'.format(args.mode, args.model))
+    print('code start/ {} mode / {} models'.format(args.mode, args.model))
     utils.assign_specific_gpu(args.gpu_nums)
 
     vocab = utils.Vocab()
@@ -200,14 +191,6 @@ def main():
 
     if args.model == 'vanilla':
         model = BaseModel(vocab, modelhps)
-    elif args.model == 'multiMech':
-        model = MultiMech(vocab, modelhps)
-    elif args.model == 'mmpms':
-        model = MMPMS(vocab, modelhps)
-    elif args.model == 'embmin':
-        model = DiverEmbMin(vocab, modelhps)
-    elif args.model == 'embavg':
-        model = DiverEmbAvg(vocab, modelhps)
     elif args.model == 'mmi_bidi':
         if args.mode == 'decode':
             bw_graph = tf.Graph()
@@ -234,11 +217,7 @@ def main():
 
     elif args.model == 'lm':
         model = LMModel(vocab, modelhps)
-    elif args.model == 'posterior':
-        model = PosteriorModel(vocab, modelhps)
-    elif args.model == 'multi_head':
-        model = MHAModel(vocab, modelhps)
-    print('model load end')
+    print('models load end')
 
     if args.mode in ['train', 'lm_train']:
         train(model, vocab, vardicts)

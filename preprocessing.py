@@ -17,7 +17,7 @@ parser.add_argument("--embed_path", type=str, default="data/embed/glove.6B.300d.
 parser.add_argument('--wikitext_raw_path', type=str, default='data/wikitext/wikitext-103/wiki.{}.tokens')
 parser.add_argument('--wikitext_processed_path', type=str, default='data/wikitext/wikitext-103/processed_wiki_{}.txt')
 parser.add_argument("--custom_embed_path", type=str, default="data/embed/my_words.txt")
-parser.add_argument("--model_path", type=str, default="data/log/", help="Path to store the model checkpoints.")
+parser.add_argument("--model_path", type=str, default="data/log/", help="Path to store the models checkpoints.")
 parser.add_argument("--vocab_size", type=int, default=50000)
 parser.add_argument("--min_cnt", type=int, help="word minimum count", default=1)
 args = parser.parse_args()

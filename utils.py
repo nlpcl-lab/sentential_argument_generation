@@ -83,7 +83,7 @@ def get_pretrain_weights(path):
 
 def print_config(args):
     print('mode: {}'.format(args.mode))
-    print('model: {}'.format(args.model))
+    print('models: {}'.format(args.model))
     print("use pretrain: {}".format(args.use_pretrain))
     print("Batch size: {}".format(args.batch_size))
 
@@ -96,17 +96,17 @@ def assign_pretrain_weights(pretrain_vardicts):
     for var in all_variables:
         varname = var.name
         new_model_var = tf.get_default_graph().get_tensor_by_name(varname)
-        if 'bw_model' in varname: varname = varname.replace('bw_model', 'model')
+        if 'bw_model' in varname: varname = varname.replace('bw_model', 'models')
         if varname in pretrain_vardicts:
             assign_op.append(tf.assign(new_model_var, pretrain_vardicts[varname]))
             assign_op_names.append(varname)
         else:
-            if varname.replace('model/decoder/attention_decoder', 'model/decoder/rnn') in pretrain_vardicts:
-                corres_varname = varname.replace('model/decoder/attention_decoder', 'model/decoder/rnn')
+            if varname.replace('models/decoder/attention_decoder', 'models/decoder/rnn') in pretrain_vardicts:
+                corres_varname = varname.replace('models/decoder/attention_decoder', 'models/decoder/rnn')
                 assign_op.append(tf.assign(new_model_var, pretrain_vardicts[corres_varname]))
                 assign_op_names.append(varname)
-            elif varname.replace('model/tgt_encoder/', 'model/encoder/') in pretrain_vardicts:
-                corres_varname = varname.replace('model/tgt_encoder/', 'model/encoder/')
+            elif varname.replace('models/tgt_encoder/', 'models/encoder/') in pretrain_vardicts:
+                corres_varname = varname.replace('models/tgt_encoder/', 'models/encoder/')
                 assign_op.append(tf.assign(new_model_var, pretrain_vardicts[corres_varname]))
                 assign_op_names.append(varname)
             elif ('/encoder/' in varname or '/decoder/' in varname) and ('kernel:0' in varname or 'bias:0' in varname):

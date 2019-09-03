@@ -52,11 +52,11 @@ class BeamsearchDecoder:
 
             result_dict[cid] = {'text': original_text, 'pers': {pid: {ppid: original_dec_text}}, 'decoded': {}}
             if self.model.hps.model in ['multiMech']:
-                # selected_ids = find_ids_by_prior(sess=self.sess, model=self.model, batch=batch)
+                # selected_ids = find_ids_by_prior(sess=self.sess, models=self.models, batch=batch)
                 selected_ids = [_ for _ in range(self.model.hps.mechanism_num)]
             elif self.model.hps.model in ['posterior']:
                 selected_ids = find_ids_by_prior(sess=self.sess, model=self.model, batch=batch)
-                # selected_ids = [_ for _ in range(self.model.hps.matrix_num)]
+                # selected_ids = [_ for _ in range(self.models.hps.matrix_num)]
             elif self.model.hps.model == 'multi_head':
                 selected_ids = [_ for _ in range(self.model.hps.multihead_num)]
             elif self.model.hps.model == 'mmpms':
@@ -179,7 +179,7 @@ def beam_search_hyps(sess, model, vocab, batch, dec_in_state, enc_states, bidi_m
                     results.append(h)
             else:
                 hyps.append(h)
-            if len(hyps) == model.hps.beam_size:  # or len(results) == model.hps.beam_size:
+            if len(hyps) == model.hps.beam_size:  # or len(results) == models.hps.beam_size:
                 break
         steps += 1
     return hyps, results
