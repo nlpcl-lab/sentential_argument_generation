@@ -17,24 +17,35 @@ This is a implementation for sentential argument generation.
 #### Prerequistes
 
 1. Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper.
+
 2. (Optional) Download the Wikitext-103 from [here](<https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/>), proposed in [this]() paper.
    - If you don't pre-train a model, just skip this part and use `--use_pretrain=False` flag when train a model.
+   
 3. Download the Glove word embedding from [here.](<https://nlp.stanford.edu/projects/glove/>)
 
 
 
-### commands
+#### commands
 
-```python
-# Preprocessing
+
+Preprocessing
+```
 python preprocessing.py
-# (Optional) Pretrain the weights of encoder and decoder
+```
+(Optional) Pretrain the weights of encoder and decoder
+```
 python main.py --mode=lm_train
-# Train model. If you don't pretrain the model in above, please set the --use_pretrain=False
+```
+Train model. If you don't pretrain the model in above, please set the --use_pretrain=False
+```
 python main.py --mode=train --model=[vanilla,embmin]
-# (Optional) To use MMI-bidi for decoding, train both the standard-seq2seq(vanilla) and the reverse-seq2seq model using below command.
+```
+(Optional) To use MMI-bidi for decoding, train both the standard-seq2seq(vanilla) and the reverse-seq2seq model using below command.
+```
 python main.py --mode=train --model=mmi_bidi
-# Decode using trained model.
+```
+Decode using trained model.
+```
 python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 ```
 
