@@ -35,7 +35,7 @@ python preprocessing.py
 (Optional) Pretrain the weights of encoder and decoder
 
 ```
-python main.py --mode=lm_train
+python main.py --mode=lm_train --model=lm
 ```
 Train model. If you don't pretrain the model in above, please set the --use_pretrain=False
 ```

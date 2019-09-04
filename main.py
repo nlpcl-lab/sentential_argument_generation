@@ -31,7 +31,7 @@ parser.add_argument("--pretrain_ckpt_path", type=str, default='./data/log/lm/scr
 parser.add_argument('--gpu_nums', type=str, default='1', help='gpu id to use')
 
 # models setups
-parser.add_argument("--models", type=str, choices=["vanilla", 'lm', 'embmin'], default="vanilla", help="Different types of models, choose from vanilla, sep_dec, and shd_dec.")
+parser.add_argument("--models", type=str, choices=["vanilla", 'lm', 'embmin', 'mmi_bidi'], default="vanilla", help="Different types of models, choose from vanilla, sep_dec, and shd_dec.")
 parser.add_argument("--mode", type=str, choices=["train", "lm_train", "decode", 'eval'], help="Whether to run train, eval, or decode", default="train")
 parser.add_argument("--min_cnt", type=int, help="word minimum count", default=1)
 parser.add_argument("--use_pretrain", type=str, choices=['True', 'False'], default='True')
@@ -217,6 +217,10 @@ def main():
 
     elif args.model == 'lm':
         model = LMModel(vocab, modelhps)
+    elif args.model == 'embmin':
+        model = DiverEmbMin(vocab, modelhps)
+    else:
+        raise ValueError
     print('models load end')
 
     if args.mode in ['train', 'lm_train']:
