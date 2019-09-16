@@ -20,6 +20,7 @@ parser.add_argument("--custom_embed_path", type=str, default="data/embed/my_word
 parser.add_argument("--model_path", type=str, default="data/log/", help="Path to store the models checkpoints.")
 parser.add_argument("--vocab_size", type=int, default=50000)
 parser.add_argument("--min_cnt", type=int, help="word minimum count", default=1)
+parser.add_argument("--parser_path", type=str, default="./stanford-corenlp-full-2018-10-05")
 args = parser.parse_args()
 
 

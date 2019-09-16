@@ -83,7 +83,7 @@ def get_pretrain_weights(path):
 
 def print_config(args):
     print('mode: {}'.format(args.mode))
-    print('models: {}'.format(args.model))
+    print('model: {}'.format(args.model))
     print("use pretrain: {}".format(args.use_pretrain))
     print("Batch size: {}".format(args.batch_size))
 

@@ -1,2 +1,5 @@
 .idea
 data/
+venv
+stanford*
+*.pyc

@@ -26,12 +26,12 @@ parser.add_argument("--embed_path", type=str, default="data/embed/glove.6B.300d.
 parser.add_argument("--custom_embed_path", type=str, default="data/embed/my_words.txt")
 parser.add_argument("--model_path", type=str, default="data/log/{}", help="Path to store the models checkpoints.")
 parser.add_argument("--exp_name", type=str, default="scratch", help="Experiment name under model_path.")
-parser.add_argument("--parser_path", type=str, default="./../stanford-corenlp-full-2018-10-05")
+parser.add_argument("--parser_path", type=str, default="./stanford-corenlp-full-2018-10-05")
 parser.add_argument("--pretrain_ckpt_path", type=str, default='./data/log/lm/scratch/train/')
 parser.add_argument('--gpu_nums', type=str, default='1', help='gpu id to use')
 
 # models setups
-parser.add_argument("--models", type=str, choices=["vanilla", 'lm', 'embmin', 'mmi_bidi'], default="vanilla", help="Different types of models, choose from vanilla, sep_dec, and shd_dec.")
+parser.add_argument("--model", type=str, choices=["vanilla", 'lm', 'embmin', 'mmi_bidi'], default="vanilla", help="Different types of models, choose from vanilla, sep_dec, and shd_dec.")
 parser.add_argument("--mode", type=str, choices=["train", "lm_train", "decode", 'eval'], help="Whether to run train, eval, or decode", default="train")
 parser.add_argument("--min_cnt", type=int, help="word minimum count", default=1)
 parser.add_argument("--use_pretrain", type=str, choices=['True', 'False'], default='True')
