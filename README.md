@@ -76,7 +76,3 @@ python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 
 * The implementation of attention mechanism and neural network is based on [this](<https://github.com/XinyuHua/neural-argument-generation>) and [this](<https://github.com/abisee/pointer-generator>) repositories.
 * Chen, Sihao, et al. "Seeing Things from a Different Angle: Discovering Diverse Perspectives about Claims." *Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)*. 2019. [paper](<https://www.aclweb.org/anthology/N19-1053>)
-
-## Contributor
-
-[ChaeHun](http://nlp.kaist.ac.kr/~ddehun)
