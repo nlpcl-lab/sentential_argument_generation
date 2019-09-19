@@ -72,6 +72,20 @@ python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 │                      └──── split/
 ```
 
+#### Results
+```
+Input
+- We should fear the power of government over the internet.
+
+Outputs:
+- National sovereignty would result in a government’s freedom of expression.
+- The government should not be celebrated.
+- It is a necessary for national security.
+- It’s conceivable to the wrong hands.
+- The government is a best way to have a universal right to have a universal right to practice.
+```
+
+
 ## References
 
 * The implementation of attention mechanism and neural network is based on [this](<https://github.com/XinyuHua/neural-argument-generation>) and [this](<https://github.com/abisee/pointer-generator>) repositories.
