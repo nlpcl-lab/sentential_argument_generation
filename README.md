@@ -23,7 +23,7 @@ This is a implementation for sentential argument generation.
    
 - Download the Glove word embedding from [here.](<https://nlp.stanford.edu/projects/glove/>)
 
-
+- After download the above resources, locate them in appropriate directory with following the below `Package Structure`.
 
 #### Commands
 
