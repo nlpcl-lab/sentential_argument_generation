@@ -53,7 +53,7 @@ python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 #### Package Structure
 
 ```
-├── argument-reasoning-comprehension
+├── sentential_argument_generation
 │     └── beamsearch.py
 │     └── data_loader.py
 │     └── preprocessing.py
