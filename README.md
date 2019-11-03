@@ -1,6 +1,6 @@
 # sentential_argument_generation
 
-This is a implementation for sentential argument generation.
+This is an official code for a paper "ArgDiver: Generating Sentential Arguments from Diverse Perspectives on Controversial Topics", accepted in NLP4IF 2019.
 
 
 
