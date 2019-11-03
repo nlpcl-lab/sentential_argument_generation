@@ -1,6 +1,6 @@
-# sentential_argument_generation
+## About
 
-This is an official code for a paper "ArgDiver: Generating Sentential Arguments from Diverse Perspectives on Controversial Topics", accepted in NLP4IF 2019.
+This is a code for a paper "ArgDiver: Generating Sentential Arguments from Diverse Perspectives on Controversial Topics", accepted in NLP4IF 2019. If you meet any problem in our code, please feel free to use the Issues section in this repository.
 
 
 
@@ -89,7 +89,6 @@ Outputs:
 - It’s conceivable to the wrong hands.
 - The government is a best way to have a universal right to have a universal right to practice.
 ```
-
 
 ## References
 
