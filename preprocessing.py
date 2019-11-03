@@ -6,7 +6,6 @@ from collections import Counter
 from stanfordcorenlp import StanfordCoreNLP as nlp
 from tensorflow.core.example import example_pb2
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--parsed_data_path", type=str, default="data/trainable/split/parsed_perspectrum_data.json")
 parser.add_argument("--processed_data_path", type=str, default="data/trainable/split/processed_perspectrum_data.json")
@@ -26,6 +25,8 @@ args = parser.parse_args()
 
 
 data_path = './data/perspectrum/'
+split_data_path = './data/trainable/split/'
+
 raw_perspectrum_data = {
     'claim_pers_fname': data_path+'perspectrum_with_answers_v1.0.json',
     'pers_pool_fname': data_path+'perspective_pool_v1.0.json',
@@ -83,6 +84,9 @@ def make_merged_dataset():
     pers = read_pers_pool(raw_perspectrum_data['pers_pool_fname'])
     claims = read_claim_pers(raw_perspectrum_data['claim_pers_fname'])
     matched = match_claim_pers(claims, pers)
+    
+    if not os.path.exists(split_data_path):
+        os.makedirs(split_data_path)
     with open(args.parsed_data_path, 'w', encoding='utf8') as f:
         json.dump(matched, f)
     return matched
