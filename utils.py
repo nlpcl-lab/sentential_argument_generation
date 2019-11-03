@@ -154,14 +154,3 @@ def gumbel_softmax(logits, temp, hard=False):
     y = tf.stop_gradient(y_hard - y) + y
   return y
 
-
-if __name__ == '__main__':
-    logit = tf.Variable([[2,2,3,1,4,1,1,2,1,1]],dtype=tf.float32)
-
-
-    with tf.Session() as sess:
-        sess.run(tf.global_variables_initializer())
-        logit = tf.nn.softmax(logit)
-        res2 = gumbel_softmax(logit, temp=0.67, hard=False)
-        print(sess.run(res2))
-
