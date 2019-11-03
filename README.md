@@ -54,12 +54,17 @@ python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 
 ```
 ├── argument-reasoning-comprehension
-│     └── script.py
-│     └── data_helper.py
+│     └── beamsearch.py
+│     └── data_loader.py
 │     └── preprocessing.py
-│     └── util.py
-│     └── esim_model.py
-│     └── model.py
+│     └── utils.py
+│     └── main.py
+│     └── models/
+│          └──── _init_.py
+│          └──── attention.py
+│          └──── basemodel.py
+│          └──── emb_min.py
+│          └──── lm.py
 │     └── data/
 │          └──── emb/
 │                 └──── glove.6B.300d.txt
