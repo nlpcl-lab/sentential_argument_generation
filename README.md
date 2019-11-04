@@ -16,9 +16,9 @@ This is a code for a paper "ArgDiver: Generating Sentential Arguments from Diver
 
 #### Prerequistes
 
-- Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper.
+- Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper. You can use `download_perspectrum.sh` script.
 
-- (Optional) Download the Wikitext-103 from [here](<https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/>), proposed in [this]() paper.
+- (Optional) Download the Wikitext-103 from [here](<https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/>), proposed in [this]() paper. You can use `download_wikitext.sh' script.
    - If you don't pre-train a model, just skip this part and use `--use_pretrain=False` flag when train a model.
    
 - Download the Glove word embedding from [here.](<https://nlp.stanford.edu/projects/glove/>)
@@ -28,7 +28,7 @@ This is a code for a paper "ArgDiver: Generating Sentential Arguments from Diver
 #### Commands
 
 
-Preprocessing
+1. Preprocessing
 ```
 python preprocessing.py
 ```
@@ -37,7 +37,7 @@ python preprocessing.py
 ```
 python main.py --mode=lm_train --model=lm
 ```
-Train model. If you don't pretrain the model in above, please set the --use_pretrain=False
+2. Train model. If you don't pretrain the model in above, please set the --use_pretrain=False
 ```
 python main.py --mode=train --model=[vanilla,embmin]
 ```
@@ -46,7 +46,7 @@ python main.py --mode=train --model=[vanilla,embmin]
 ```
 python main.py --mode=train --model=mmi_bidi
 ```
-Decode using trained model.
+3. Decode using trained model.
 ```
 python main.py --mode=decode --model=[vanilla,mmi_bidi,embmin] --beam_size=10
 ```
