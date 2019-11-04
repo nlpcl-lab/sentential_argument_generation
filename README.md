@@ -2,7 +2,7 @@
 
 This is a code for a paper "ArgDiver: Generating Sentential Arguments from Diverse Perspectives on Controversial Topics", accepted in NLP4IF 2019. If you meet any problem in our code, please feel free to use the Issues section in this repository.
 
-
+<img src="https://github.com/nlpcl-lab/sentential_argument_generation/blob/master/model.png">
 
 ## Getting Started
 
