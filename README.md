@@ -16,7 +16,7 @@ This is a code for a paper "ArgDiver: Generating Sentential Arguments from Diver
 
 #### Prerequistes
 
-- Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper. You can use `download_perspectrum.sh` script.
+- Prepare the PERSPECTRUM dataset proposed in [this](<https://www.aclweb.org/anthology/N19-1053>) paper.
 
 - (Optional) Download the Wikitext-103 from [here](<https://blog.einstein.ai/the-wikitext-long-term-dependency-language-modeling-dataset/>), proposed in [this]() paper. You can use `download_wikitext.sh' script.
    - If you don't pre-train a model, just skip this part and use `--use_pretrain=False` flag when train a model.
